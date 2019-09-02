@@ -10,13 +10,12 @@
     "lint-fix": "eslint --fix --ext .ts --fix --ext .tsx src"
   },
   "dependencies": {
-    "@types/node": "^12.7.3",
-    "@types/react-loadable": "^5.5.1",
     "@uform/antd": "^0.4.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4",
     "tcon": "^1.0.4",
     "tslib": "^1.10.0"
   },
@@ -29,6 +28,8 @@
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
+    "@types/node": "^12.7.3",
+    "@types/react-loadable": "^5.5.1",
     "@types/classnames": "^2.2.9",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
