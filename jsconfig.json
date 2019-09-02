@@ -3,9 +3,12 @@
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
 		"baseUrl": ".",
-		"paths": {
-			"@/*": ["./src/*"]
-		}
+    "paths": {
+      "@mock/*": ["mock/"],
+      "@src/*": ["src/"],
+      "@common/*": ["src/common/"],
+      "@components/*": ["src/common/components/"]
+    }
 	},
 	"exclude": ["node_modules"]
 }

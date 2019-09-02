@@ -1,9 +1,10 @@
 import * as React from 'react'
+import { ReactNode, Component } from "react";
 
-const Detail = () => {
-  return (
-    <div>Users - Detail</div>
-  )
-};
-
-export default Detail
+export default class Detail extends Component {
+  render() : ReactNode {
+    return (
+      <div>Users - Detail</div>
+    )
+  }
+}

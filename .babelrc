@@ -4,17 +4,17 @@
     "@babel/preset-react",
     [
       "@babel/preset-env", {
-        "modules": false
-      }
+      "modules": false
+    }
     ]
   ],
   "plugins": [
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-syntax-dynamic-import",
     [
-      "import", {
-        "libraryName": "antd",
-        "style": false
+      "babel-plugin-tcon",
+      {
+        "libPath": "style/tcon"
       }
     ]
   ]

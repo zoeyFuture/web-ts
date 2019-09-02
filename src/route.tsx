@@ -4,7 +4,7 @@ export default [
   {
     name: '首页',
     path: '/home',
-    component: import('@/routes/Home')
+    component: () => import('@src/routes/Home')
   },
   {
     name: '管理中心',
@@ -13,12 +13,12 @@ export default [
       {
         name: '用户管理',
         path: '/manage/users',
-        component: import('@/routes/Manage/Users')
+        component: () => import('@src/routes/Manage/Users')
       },
       {
         name: 'Hook分享',
         path: '/manage/hook',
-        component: import('@/routes/Manage/Users')
+        component: () => import('@src/routes/Manage/Users')
       },
     ],
   },

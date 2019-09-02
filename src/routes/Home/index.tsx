@@ -1,9 +1,24 @@
-import * as React from 'react'
+import React from 'react'
+import { Table } from 'antd'
+import PageLayout from '@components/PageLayout'
+import Breadcrumb from '@components/Breadcrumb'
 
-const Home = () => {
+import { getRoutes, getColumns } from './config'
+
+const { Header, Content } = PageLayout
+
+export default () => {
+  const routes = getRoutes()
+  const columns = getColumns()
   return (
-    <div>Home - Home</div>
-  )
-};
+    <PageLayout>
+      <Header>
+        <Breadcrumb routes={routes} />
+      </Header>
 
-export default Home
+      <Content>
+        <Table columns={columns} dataSource={[]}/>
+      </Content>
+    </PageLayout>
+  )
+}

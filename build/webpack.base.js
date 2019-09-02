@@ -6,8 +6,10 @@ module.exports = {
   entry: './src/index.tsx',
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-      '@common': path.resolve(__dirname, './src/common'),
+      '@mock': path.join(__dirname, '..', 'mock'),
+      '@src': path.join(__dirname, '..', 'src'),
+      '@common': path.join(__dirname, '..', 'src/common'),
+      '@components': path.join(__dirname, '..', 'src/common/components'),
     },
     extensions: ['.js', '.tsx', '.ts']
   },
@@ -16,12 +18,7 @@ module.exports = {
       {
         test: /\.(js|tsx|ts)$/,
         include: path.resolve('./src'),
-        use: 'babel-loader'
-      },
-      {
-        test: /\.ts(x?)$/,
-        include: path.resolve('./src'),
-        use: "awesome-typescript-loader"
+        use: 'babel-loader',
       },
     ]
   },
