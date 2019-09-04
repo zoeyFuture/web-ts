@@ -1,6 +1,14 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react'
+import React, {useRef, forwardRef, useImperativeHandle, ReactNode} from 'react'
 
-export default forwardRef((props, ref) => {
+interface IProps {
+  
+}
+
+interface IRef {
+  current: ReactNode,
+}
+
+export default forwardRef((props:IProps, ref: IRef) => {
   const inputRef = useRef()
 
   useImperativeHandle(ref, () => ({

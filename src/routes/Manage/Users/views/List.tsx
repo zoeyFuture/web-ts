@@ -1,10 +1,10 @@
-import * as React from 'react'
-import { ReactNode, Component } from "react";
+import React from 'react'
 
-export default class List extends Component {
-  render() : ReactNode {
-    return (
-      <div>Users - List</div>
-    )
-  }
+const List = () => {
+  console.log('Users - List')
+  return (
+    <div>Users - List</div>
+  )
 }
+
+export default List

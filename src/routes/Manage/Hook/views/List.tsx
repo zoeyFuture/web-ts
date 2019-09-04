@@ -4,7 +4,7 @@ import UseRef from '../components/UseRef'
 import UseImperativeHandle from '../components/UseImperativeHandle'
 import Ref from '../components/Ref'
 
-export default () => {
+const List:React.FC = () => {
   const subInputRef = useRef()
   const domInputRef = React.createRef()
 
@@ -32,5 +32,7 @@ export default () => {
       <UseRef />
       <UseImperativeHandle ref={subInputRef} />
     </div>
-  );
-};
+  )
+}
+
+export default List

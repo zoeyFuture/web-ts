@@ -1,6 +1,6 @@
 import React, { ReactNode, useCallback, useState, useEffect, useMemo } from 'react'
-import { Link } from 'react-router-dom'
-import { Menu, Icon, Layout, Button } from 'antd'
+import { Link, NavLink } from 'react-router-dom'
+import { Menu, Icon, Layout, Button, Spin } from 'antd'
 
 import './index.less'
 
@@ -46,7 +46,6 @@ export default (props:IProps) => {
           />
           <span className="title">移动彩云数字营销平台</span>
         </div>
-
         <Menu
           className="menu"
           mode="horizontal"
@@ -55,7 +54,11 @@ export default (props:IProps) => {
         >
           {
             navMenus.map((it: any) => (
-              <Item key={it.id}>{it.name}</Item>
+              <Item key={it.id}>
+                <NavLink key={it.id} to={it.pageUri} activeClassName="activeClassName">
+                  {it.name}
+                </NavLink>
+              </Item>
             ))
           }
         </Menu>
@@ -81,7 +84,7 @@ export default (props:IProps) => {
       </Header>
 
       <Layout className="xm-layout__sider">
-        <Sider>
+        <Sider style={{ background: '#fff' }}>
           {
             subMenus.length > 0 && (
               <Menu
@@ -123,8 +126,6 @@ export default (props:IProps) => {
           }
         </Sider>
 
-        {/*// 需引入原子库*/}
-
         <Layout className="xm-layout__content">
           <Content>
             { children }
@@ -132,5 +133,6 @@ export default (props:IProps) => {
         </Layout>
       </Layout>
     </Layout>
+    
   )
 }

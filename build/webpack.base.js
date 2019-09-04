@@ -8,7 +8,11 @@ module.exports = {
     alias: {
       '@mock': path.join(__dirname, '..', 'mock'),
       '@src': path.join(__dirname, '..', 'src'),
+      '@redux': path.join(__dirname, '..', 'src/redux'),
+      '@unstated': path.join(__dirname, '..', 'src/unstated'),
       '@common': path.join(__dirname, '..', 'src/common'),
+      '@utils': path.join(__dirname, '..', 'src/common/utils'),
+      '@container': path.join(__dirname, '..', 'src/common/container'),
       '@components': path.join(__dirname, '..', 'src/common/components'),
     },
     extensions: ['.js', '.tsx', '.ts']
@@ -28,8 +32,13 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: './index.html'
-    })
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        minifyCSS: true
+      },
+      template: 'index.html'
+    }),
   ],
   performance: {
     hints: false

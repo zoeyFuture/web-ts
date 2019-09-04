@@ -1,34 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Table, Button } from 'antd'
-import { useSelector, useDispatch } from 'react-redux'
 
 import PageLayout from '@components/PageLayout'
 import Breadcrumb from '@components/Breadcrumb'
-import { EnumAction } from '@redux/counter/actions'
+
+import Counter from '@unstated/counter'
 
 import { getRoutes, getColumns } from './config'
 
 const { Header, Content } = PageLayout
 
 export default () => {
-  const dispatch = useDispatch()
-  const count =  useSelector(({ counter }) => counter.count)
+  const counter = Counter.useContainer()
+
   const handleIncrease = () => {
-    dispatch({
-      type: EnumAction.INCREASE,
-      payload: {
-        count: 10,
-      },
-    })
+    counter.increase()
   }
 
   const handleDecrease = () => {
-    dispatch({
-      type: EnumAction.DECREASE,
-      payload: {
-        count: 10,
-      },
-    })
+    counter.decrease()
   }
 
   const routes = getRoutes()
@@ -43,7 +33,7 @@ export default () => {
         <Button type="link" loading>
           Link
         </Button>
-        <span>{count}</span>
+        <span>{counter.count}</span>
         <Button onClick={handleIncrease}>增加</Button>
         <Button onClick={handleDecrease}>减少</Button>
         <Table columns={columns} dataSource={[]}/>

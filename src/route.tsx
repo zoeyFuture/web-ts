@@ -7,6 +7,11 @@ export default [
     component: () => import('@src/routes/Home')
   },
   {
+    name: '登录',
+    path: '/login',
+    component: () => import('@src/routes/Login')
+  },
+  {
     name: '管理中心',
     path: '/manage',
     children: [
@@ -18,7 +23,7 @@ export default [
       {
         name: 'Hook分享',
         path: '/manage/hook',
-        component: () => import('@src/routes/Manage/Users')
+        component: () => import('@src/routes/Manage/Hook')
       },
     ],
   },

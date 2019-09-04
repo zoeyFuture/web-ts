@@ -1,19 +1,24 @@
-import * as React from "react";
+import React, { Fragment } from 'react';
+import { Route, Redirect } from 'react-router-dom';
 
 import List from './views/List';
 import Detail from './views/Detail';
 
-interface IProps {
-  name: string;
-  age: number;
+interface IMatch {
+  path: string
 }
 
-const App = (props: IProps) => {
-  const { name, age } = props
+interface IProps {
+  match: IMatch
+}
+
+export default (props:IProps) => {
+  const { match: { path } } = props
+  console.log('path:', path)
 
   return (
-    <h1>Hello from {name} and {age}!</h1>
-)
-};
-
-export default App
+    <div>
+      你好，我是Users
+    </div>
+  )
+}
