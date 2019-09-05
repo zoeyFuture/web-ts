@@ -3,7 +3,7 @@ export const getRouteMap = (routes) => {
 
   routes.forEach((it) => {
     if (Array.isArray(it.children)) {
-      it.children.forEach(d => {
+      it.children.forEach((d) => {
         routeConfig.push(d)
       })
     } else {

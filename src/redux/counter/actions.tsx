@@ -1,6 +1,6 @@
 export enum EnumAction {
-  INCREASE, // 增加
-  DECREASE, // 减少
+  // INCREASE, // 增加
+  // DECREASE, // 减少
 }
 
 interface IPayload {

@@ -1,20 +1,24 @@
-{
+module.exports = {
   "env": {
     "browser": true,
     "commonjs": true,
     "es6": true
   },
-  "parser": "babel-eslint", // 解析器用于解析代码
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "react",
+    "typescript"
+  ],
   "extends": "airbnb",
   "parserOptions": { // 解析器配置
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
       "legacyDecotators": true,
-      "jsx": true
+      "jsx": true,
+      "useJSXTextNode": true
     },
     "sourceType": "module"
   },
-  "plugins": ["react"], // 第三方插件
   "rules": {
     "indent": ["error", 2], // 一个缩进必须用2个空格替代
     "array-callback-return": [2], // 数组的方法除了 forEach 之外，回调函数必须有返回值
@@ -24,11 +28,7 @@
     "no-param-reassign": [2], // 禁止对函数的参数重新赋值
     "consistent-return": [0], // 禁止函数在不同分支返回不同类型的值
     "react/forbid-prop-types": [0], // // 禁止使用一些指定的 propTypes
-    "react/jsx-filename-extension": [ // 限制文件后缀
-      1, {
-        "extensions": [".js"]
-      }
-    ],
+    "react/jsx-filename-extension": [0],
     "global-require": [0], // require 必须在全局作用域下
     "import/prefer-default-export": [0],
     "react/jsx-no-bind": [0], // // jsx 中禁止使用 bind
@@ -76,6 +76,16 @@
     "function-paren-newline": [0],
     "no-restricted-globals": [0], //  // 禁止使用指定的全局变量
     "require-yield": [1], // generator 函数内必须有 yield
-    "semi": [0] // 尾部逗号
+    "semi": [0], // 尾部逗号
+    "typescript/class-name-casing": [2],
+    "no-unused-vars": [
+      2,
+      {
+        vars: "all",
+        args: "none",
+        caughtErrors: "none",
+        ignoreRestSiblings: true
+      }
+    ],
   }
 }

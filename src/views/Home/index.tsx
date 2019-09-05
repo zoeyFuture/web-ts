@@ -12,7 +12,7 @@ const { Header, Content } = PageLayout
 
 export default () => {
   const dispatch = useDispatch()
-  const count =  useSelector(({ counter }) => counter.count)
+  const count = useSelector(({ counter }) => counter.count)
   const handleIncrease = () => {
     dispatch({
       type: EnumAction.INCREASE,
@@ -33,6 +33,7 @@ export default () => {
 
   const routes = getRoutes()
   const columns = getColumns()
+
   return (
     <PageLayout>
       <Header>
@@ -46,9 +47,8 @@ export default () => {
         <span>{count}</span>
         <Button onClick={handleIncrease}>增加</Button>
         <Button onClick={handleDecrease}>减少</Button>
-        <Table columns={columns} dataSource={[]}/>
+        <Table columns={columns} dataSource={[]} />
       </Content>
     </PageLayout>
   )
 }
-

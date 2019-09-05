@@ -13,7 +13,6 @@
       "@mock/*": ["mock/*"],
       "@src/*": ["src/*"],
       "@redux/*": ["src/redux/*"],
-      "@unstated/*": ["src/unstated/*"],
       "@common/*": ["src/common/*"],
       "@utils/*": ["src/common/utils/*"],
       "@container/*": ["src/common/container/*"],

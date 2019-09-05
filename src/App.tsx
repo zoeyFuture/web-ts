@@ -1,17 +1,14 @@
-import React from "react"
+import React, { Suspense } from 'react'
+import { HashRouter, Switch } from 'react-router-dom'
+import { Skeleton, Spin } from 'antd'
 import * as Loadable from 'react-loadable'
-import { HashRouter, Route, Switch, Redirect } from 'react-router-dom'
-
-import route from './route'
 
 import 'antd/dist/antd.css'
 
 import Loading from '@components/Loading'
-import NotFound from '@components/NotFound'
 import XmLayout from '@components/XmLayout'
 import AuthorizedRoute from '@container/AuthorizedRoute'
-
-
+import route from './route'
 
 const getRouteMap = (routes: any[]) => {
   const routeConfig: any = [];
@@ -29,28 +26,27 @@ const getRouteMap = (routes: any[]) => {
   return routeConfig;
 }
 
+interface IRoute {
+  path: string,
+  component: React.FC,
+}
+
 // 根据后端配置渲染路由信息
 const App = () => (
   <HashRouter>
     <Switch>
       <XmLayout>
-        {getRouteMap(route).map((item: any) => (
+        {getRouteMap(route).map((route: IRoute) => (
           <AuthorizedRoute
-            key={item.path}
-            exact={true}
-            path={item.path}
-            component={Loadable({
-              loader: item.component,
-              loading: Loading
-            })}
+            key={route.path}
+            path={route.path}
+            component={route.component}
           />
         ))}
-        {/*<Route component={NotFound} />*/}
       </XmLayout>
     </Switch>
   </HashRouter>
 )
-
 
 
 export default App

@@ -4,26 +4,26 @@ export default [
   {
     name: '首页',
     path: '/home',
-    component: () => import('@src/routes/Home')
+    component: lazy(() => import('@src/views/Home')),
   },
   {
     name: '登录',
     path: '/login',
-    component: () => import('@src/routes/Login')
+    component: lazy(() => import('@src/views/Login')),
   },
   {
     name: '管理中心',
     path: '/manage',
     children: [
       {
-        name: '用户管理',
-        path: '/manage/users',
-        component: () => import('@src/routes/Manage/Users')
-      },
-      {
         name: 'Hook分享',
         path: '/manage/hook',
-        component: () => import('@src/routes/Manage/Hook')
+        component: lazy(() => import('@src/views/Manage/Hook')),
+      },
+      {
+        name: '用户管理',
+        path: '/manage/users',
+        component: lazy(() => import('@src/views/Manage/Users')),
       },
     ],
   },

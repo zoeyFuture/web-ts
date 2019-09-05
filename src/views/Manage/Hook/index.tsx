@@ -1,15 +1,12 @@
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import React from 'react'
+import { Route, Redirect } from 'react-router-dom'
 
-import List from './views/List';
-import Detail from './views/Detail';
+import List from './views/List'
+import Detail from './views/Detail'
 
 export default ({ match: { path } }) => {
-
-  console.log('List:', `${path}/list`)
-
   return (
-    <div>
+    <>
       <Route path={`${path}/list`} component={List} />
       <Route path={`${path}/detail/:id`} component={Detail} />
       <Route
@@ -19,6 +16,6 @@ export default ({ match: { path } }) => {
           <Redirect to={`${path}/list`} />
         )}
       />
-    </div>
+    </>
   )
-};
+}

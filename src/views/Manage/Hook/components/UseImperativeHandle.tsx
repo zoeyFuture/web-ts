@@ -1,11 +1,10 @@
-import React, {useRef, forwardRef, useImperativeHandle, ReactNode} from 'react'
+import React, { useRef, forwardRef, useImperativeHandle } from 'react'
 
 interface IProps {
-  
+
 }
 
 interface IRef {
-  current: ReactNode,
 }
 
 export default forwardRef((props:IProps, ref: IRef) => {
@@ -13,19 +12,18 @@ export default forwardRef((props:IProps, ref: IRef) => {
 
   useImperativeHandle(ref, () => ({
     // 这里返回的属性保存在父组件中的 current 属性中
-    focus:  () => {
+    focus: () => {
       inputRef.current.focus()
     },
     input: (title) => {
       inputRef.current.value = title
-    }
+    },
   }))
 
   return (
     <div>
-      函数组件 - > forwardRef + useImperativeHandle 测试
+      函数组件 - forwardRef + useImperativeHandle 测试
       <input ref={inputRef} placeholder="ref 焦点测试" />
     </div>
   )
 })
-

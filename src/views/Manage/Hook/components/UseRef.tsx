@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 export default () => {
-  const [name, setName] = useState("张三")
+  const [name, setName] = useState('张三')
   // useRef 场景一：获取Dom节点信息
   const domRef = useRef()
 
   // useRef 场景二：保存上一次的值
   const lastRef = useRef()
 
-  const changeName = (name: string) => {
-    setName(name)
+  const changeName = (_name: string) => {
+    setName(_name)
   }
 
   useEffect(() => {
@@ -24,6 +24,10 @@ export default () => {
   console.log('lastRef:', lastRef.current === changeName)
 
   return (
-    <div ref={domRef}>useRef -> {name}</div>
+    <div ref={domRef}>
+      useRef -
+      {' '}
+      {name}
+    </div>
   )
 }

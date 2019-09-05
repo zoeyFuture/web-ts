@@ -1,32 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import isPlainObject from 'lodash/isPlainObject'
+import { useState } from 'react'
+// import isPlainObject from 'lodash/isPlainObject'
 
-export default () => {
-  // sessionStorage.setItem("key", "value");
-  // var value = sessionStorage.getItem("key");
-  // sessionStorage.removeItem("key");
-  // sessionStorage.clear();
+const useSessionStorage = (initialValue = {}) => {
+  const [value, setValue] = useState(initialValue)
 
-  sessionStorage.setItem("isLogin", "true");
-
-  const isLogin = sessionStorage.getItem("isLogin");
-
-  sessionStorage.removeItem("key")
+  return [value, setValue]
 }
 
-const useSessionStorage = (key, initialValue={}) => {
-  const [value, setValue] =
-
-  const setValue = (value) => {
-    if (isPlainObject) {
-      const jsonValue = JSON.stringify(value)
-
-    }
-  }
-
-}
-
-return [value, setValue, removeValue]
-
-
-const [value, setValue]
+export default useSessionStorage

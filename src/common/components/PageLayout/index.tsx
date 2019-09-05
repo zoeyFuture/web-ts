@@ -7,8 +7,8 @@ import './index.less'
 interface IProps {
   loading?: boolean,
   hidden?: boolean,
-  children?: ReactNode,
   wrapperClassName?: string,
+  children?: any,
 }
 
 const Layout = (props: IProps) => {
@@ -72,7 +72,8 @@ const Footer = (props: IProps) => {
   return (
     <div
       className={
-        cs(`page-layout__footer ${wrapperClassName}`, {"hidden": hidden})}
+        cs(`page-layout__footer ${wrapperClassName}`, { hidden })
+      }
       {...rest}
     >
       {children}

@@ -18,10 +18,8 @@ export default (
 
     // 异步请求使用try catch语句包裹
     try {
-      const result = await fetchFunction(params)
-
-      // @ts-ignore
-      setResult(result)
+      const response: any = await fetchFunction(params)
+      setResult(response)
       setLoading(false)
     } catch (err) {
       setLoading(false)

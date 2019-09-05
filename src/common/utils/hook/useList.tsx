@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import {object} from "prop-types";
+import { useState } from 'react'
+import axios from 'axios'
 
 interface IPagination {
   current: number,
@@ -14,6 +14,10 @@ interface IInitParams {
   pagination?: IPagination, // 分页器参数
 }
 
+interface IDate {
+  total: number,
+}
+
 export default (url: string, initParams: IInitParams = {}) => {
   const [data, setData] = useState([])
 
@@ -25,20 +29,20 @@ export default (url: string, initParams: IInitParams = {}) => {
     current: 1,
     pageSize: 20,
     total: 0,
-    showTotal: total => `共${total}条`,
+    showTotal: (total) => `共${total}条`,
   })
 
   const fetchData = (searchParams = params) => {
-    const {current: currentPage, pageSize} = pagination
+    const { current: currentPage, pageSize } = pagination
 
-    return http.get(url,
+    return axios.get(url,
       {
         currentPage,
         pageIndex: currentPage,
         pageSize,
         ...searchParams,
       }).then((res: object) => {
-      const { data } = res
+      const { data: object } = res
 
       setData(data)
       setParams(searchParams)
@@ -52,9 +56,9 @@ export default (url: string, initParams: IInitParams = {}) => {
     })
   }
 
-  const pageTo = (pagination) => fetchData(pagination)
+  const pageTo = (pagination: any) => fetchData(pagination)
 
-  const search = (params) => fetchData({...pagination, current: 1}, params)
+  const search = (params: any) => fetchData({ ...pagination, current: 1 })
 
   return {
     pagination,

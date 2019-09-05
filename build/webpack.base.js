@@ -9,7 +9,6 @@ module.exports = {
       '@mock': path.join(__dirname, '..', 'mock'),
       '@src': path.join(__dirname, '..', 'src'),
       '@redux': path.join(__dirname, '..', 'src/redux'),
-      '@unstated': path.join(__dirname, '..', 'src/unstated'),
       '@common': path.join(__dirname, '..', 'src/common'),
       '@utils': path.join(__dirname, '..', 'src/common/utils'),
       '@container': path.join(__dirname, '..', 'src/common/container'),

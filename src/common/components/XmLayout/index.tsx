@@ -1,8 +1,11 @@
-import React, { ReactNode, useCallback, useState, useEffect, useMemo } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import React, { ReactNode, useState, useEffect, useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { Menu, Icon, Layout, Button, Spin } from 'antd'
 
 import './index.less'
+
+// TODO 获取路由配置，模拟后端请求
+import route from '@src/route';
 
 const { SubMenu, Item } = Menu
 const { Header, Content, Sider } = Layout
@@ -16,25 +19,21 @@ export default (props:IProps) => {
   const { children } = props
 
   // 侧边栏菜单
-  const [subMenus, setSubMenus] = useState([])
-  const [navMenus, setNavMenus] = useState([]) // 整体菜单栏信息
+  const [siderMenus, setSiderMenus] = useState([])
 
   useEffect(() => {
-    const routes = require('@mock/routes.json')
-    setNavMenus(routes.data)
+    setSiderMenus(route)
   }, [])
 
-  const handleMenuSelect = useCallback(({ key }) => {
-    const { subMenus } = navMenus.find(d => d.id === Number(key)) || {}
-    setSubMenus(subMenus)
-  }, [navMenus])
+  const defaultOpenKeys = useMemo(() => siderMenus
+    .filter(({ children }) => Array.isArray(children))
+    .map(({ path }) => path),
+  [siderMenus])
+
+  console.log('defaultOpenKeys:', defaultOpenKeys)
 
   const defaultSelectedKeys = useMemo(() =>
-    navMenus.length > 0 ? [navMenus[0].id.toString()] : [], [navMenus])
-
-  const defaultOpenKeys = useMemo(() =>
-    subMenus.filter(({ subMenus }) => Array.isArray(subMenus))
-      .map(({ id }) => id.toString()), [subMenus])
+    siderMenus.length > 0 && siderMenus[0].path, [siderMenus])
 
   return (
     <Layout className="xm-layout">
@@ -46,22 +45,6 @@ export default (props:IProps) => {
           />
           <span className="title">移动彩云数字营销平台</span>
         </div>
-        <Menu
-          className="menu"
-          mode="horizontal"
-          defaultSelectedKeys={defaultSelectedKeys}
-          onSelect={handleMenuSelect}
-        >
-          {
-            navMenus.map((it: any) => (
-              <Item key={it.id}>
-                <NavLink key={it.id} to={it.pageUri} activeClassName="activeClassName">
-                  {it.name}
-                </NavLink>
-              </Item>
-            ))
-          }
-        </Menu>
 
         <div className="operation">
           <Icon type="home" />
@@ -86,19 +69,19 @@ export default (props:IProps) => {
       <Layout className="xm-layout__sider">
         <Sider style={{ background: '#fff' }}>
           {
-            subMenus.length > 0 && (
+            siderMenus.length > 0 && (
               <Menu
                 mode="inline"
-                // defaultSelectedKeys={['1']} // 默认选中的菜单
+                defaultSelectedKeys={[defaultSelectedKeys]} // 默认选中的菜单
                 defaultOpenKeys={defaultOpenKeys} // 默认展开的菜单
               >
                 {
-                  subMenus.map(f => {
+                  siderMenus.map((f) => {
                     let menus = []
-                    if (Array.isArray(f.subMenus) && subMenus.length > 0) {
-                      menus = f.subMenus.map(({ id, name, pageUri }: any) => (
-                        <Item key={id}>
-                          <Link to={pageUri}>{name}</Link>
+                    if (Array.isArray(f.children)) {
+                      menus = f.children.map(({ name, path }: any) => (
+                        <Item key={path}>
+                          <Link to={path}>{name}</Link>
                         </Item>
                       ))
                     }
@@ -115,8 +98,8 @@ export default (props:IProps) => {
                     }
 
                     return (
-                      <Item key={f.id}>
-                        <Link to={f.pageUri}>{f.name}</Link>
+                      <Item key={f.path}>
+                        <Link to={f.path}>{f.name}</Link>
                       </Item>
                     )
                   })
@@ -133,6 +116,6 @@ export default (props:IProps) => {
         </Layout>
       </Layout>
     </Layout>
-    
+
   )
 }

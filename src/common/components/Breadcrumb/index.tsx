@@ -1,5 +1,5 @@
-import React, {ReactNode} from 'react'
-import {withRouter, Link} from 'react-router-dom'
+import React, { ReactNode } from 'react'
+import { withRouter, Link } from 'react-router-dom'
 
 import './index.less'
 
@@ -29,7 +29,7 @@ export default (props: IProps) => {
               return (
                 <Link className="route" key={route} to={to} onClick={handleClick}>{route}</Link>
               )
-            } else if (handleClick){
+            } else if (handleClick) {
               return (
                 <a className="route" key={route} onClick={handleClick}>{route}</a>
               )
@@ -51,4 +51,3 @@ export default (props: IProps) => {
     </div>
   )
 }
-
