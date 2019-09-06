@@ -1,6 +1,6 @@
-import React, {Suspense} from 'react'
+import React, { Suspense } from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import { Skeleton } from "antd";
+import { Skeleton } from 'antd';
 
 interface IProps {
   key: number | string,
@@ -19,11 +19,12 @@ const AuthorizedRoute = (props: IProps) => {
     return (
       <Route
         {...rest}
-        render={(props) =>  (
+        render={(props) => (
           <Suspense fallback={<Skeleton />}>
             <Component {...props} />
           </Suspense>
-        )} />
+        )}
+      />
     )
   }
   return <Route {...rest} render={() => <Redirect to="/login" />} />

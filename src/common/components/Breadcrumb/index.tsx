@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import './index.less'
 

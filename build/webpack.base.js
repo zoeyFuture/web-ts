@@ -6,9 +6,8 @@ module.exports = {
   entry: './src/index.tsx',
   resolve: {
     alias: {
-      '@mock': path.join(__dirname, '..', 'mock'),
       '@src': path.join(__dirname, '..', 'src'),
-      '@redux': path.join(__dirname, '..', 'src/redux'),
+      '@store': path.join(__dirname, '..', 'src/store'),
       '@common': path.join(__dirname, '..', 'src/common'),
       '@utils': path.join(__dirname, '..', 'src/common/utils'),
       '@container': path.join(__dirname, '..', 'src/common/container'),

@@ -18,6 +18,10 @@ interface IDate {
   total: number,
 }
 
+interface IResponse {
+  data: IDate,
+}
+
 export default (url: string, initParams: IInitParams = {}) => {
   const [data, setData] = useState([])
 
@@ -41,8 +45,9 @@ export default (url: string, initParams: IInitParams = {}) => {
         pageIndex: currentPage,
         pageSize,
         ...searchParams,
-      }).then((res: object) => {
-      const { data: object } = res
+      }).then((res: IResponse) => {
+      const { data: IDate } = res
+      const { total } = data
 
       setData(data)
       setParams(searchParams)
@@ -50,7 +55,7 @@ export default (url: string, initParams: IInitParams = {}) => {
 
       setPagination({
         ...pagination,
-        total: data.total,
+        total: total,
         current: currentPage,
       })
     })

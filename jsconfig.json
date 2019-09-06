@@ -4,9 +4,8 @@
 		"experimentalDecorators": true,
 		"baseUrl": ".",
     "paths": {
-      "@mock/*": ["mock/*"],
       "@src/*": ["src/*"],
-      "@redux/*": ["src/redux/*"],
+      "@store/*": ["src/store/*"],
       "@common/*": ["src/common/*"],
       "@utils/*": ["src/common/utils/*"],
       "@container/*": ["src/common/container/*"],
